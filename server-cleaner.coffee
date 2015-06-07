@@ -65,7 +65,7 @@ gen_link=(list_object)->
   d.className=list_object['type']
   d.href=list_object['href']
   css="""<style>a{
-        margin: 10px;
+        margin: 6px;
         position: relative;
         float: left;
         text-decoration: none;
@@ -81,10 +81,31 @@ gen_link=(list_object)->
       }</style>
     """
   css+d.outerHTML
+
+gen_photo=(list_object)->
+  d=document.createElement("img")
+  #d.innerText = list_object['text']
+  d.className=list_object['type']
+  d.src=list_object['href']
+  d.href=list_object['href']
+  css="""<style>.photo{
+        margin: 6px;
+        position: relative;
+        height:2in;
+        float: left;
+        width:auto;
+      }
+      .photo:hover, .photo:active{
+        opacity:0.6;
+      }</style>
+    """
+  css+d.outerHTML
   
 for i in collected_elements
   console.log(gen_link(i))
   i['html']=gen_link(i)
+  if i['type'] == "photo"
+    i['html']=gen_photo(i)
 
 document.write "<html><body style='width:100%;height:auto;background:rgba(20,20,20,0.9);margin:0;'>"
 
@@ -108,3 +129,7 @@ for i in type_guide
 
 document.write "</body></html>"
 
+for i in document.getElementsByTagName("img")
+  i.ondblclick=()->
+    console.log "opening #{this.src}"
+    location.href=this.src
