@@ -107,7 +107,12 @@ for i in collected_elements
   if i['type'] == "photo"
     i['html']=gen_photo(i)
 
-document.write "<html><body style='width:100%;height:auto;background:rgba(20,20,20,0.9);margin:0;'>"
+document.body.innerHTML=""
+b_s=document.body.style
+b_s.height="auto"
+b_s.width="100%"
+b_s.background='rgba(20,20,20,0.9)'
+b_s.margin=0
 
 for i in type_guide
   element_has_been_added=false
@@ -125,9 +130,7 @@ for i in type_guide
       element_has_been_added=true
       d.innerHTML+=x['html']
   if element_has_been_added
-    document.write d.outerHTML
-
-document.write "</body></html>"
+    document.body.innerHTML+= d.outerHTML
 
 for i in document.getElementsByTagName("img")
   i.ondblclick=()->
