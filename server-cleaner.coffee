@@ -101,11 +101,31 @@ gen_photo=(list_object)->
     """
   css+d.outerHTML
   
+gen_video=(list_object)->
+  d=document.createElement('video')
+  d.className=list_object['type']
+  d.src=list_object['href']
+  css="""<style>
+    .video{
+      width:10%;
+      margin:6px 0;
+      height:auto;
+      float:left;
+      position:relative;
+    }
+    .video:hover, .video:active{
+      opacity:0.6;
+    }
+  </style>"""
+  css+d.outerHTML
+
 for i in collected_elements
   console.log(gen_link(i))
   i['html']=gen_link(i)
   if i['type'] == "photo"
     i['html']=gen_photo(i)
+  if i['type'] == "video"
+    i['html']=gen_video(i)
 
 document.body.innerHTML=""
 b_s=document.body.style
