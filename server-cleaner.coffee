@@ -91,9 +91,9 @@ gen_photo=(list_object)->
   css="""<style>.photo{
         margin: 6px;
         position: relative;
-        height:2in;
+        height:auto;
         float: left;
-        width:auto;
+        width:80%;
       }
       .photo:hover, .photo:active{
         opacity:0.6;
