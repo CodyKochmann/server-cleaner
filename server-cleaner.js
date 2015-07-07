@@ -82,7 +82,7 @@
     d.className = list_object['type'];
     d.src = list_object['href'];
     d.href = list_object['href'];
-    css = "<style>.photo{\n  margin: 6px;\n  position: relative;\n  height:auto;\n  float: left;\n  width:80%;\n}\n.photo:hover, .photo:active{\n  opacity:0.6;\n}</style>";
+    css = "<style>.photo{\n  margin: 6px;\n  position: relative;\n  height:auto;\n  float: left;\n  width:100%;\n}\n.photo:hover, .photo:active{\n  opacity:0.6;\n}</style>";
     return css + d.outerHTML;
   };
 
@@ -127,8 +127,8 @@
     s = d.style;
     s.position = "relative";
     s.height = "auto";
-    s.width = "80%";
-    s.margin = "0.1in 10%";
+    s.width = "90%";
+    s.margin = "0.1in 5%";
     s.float = "left";
     d.innerHTML = "<p style='height:0.25in;width:100%;margin:0.05in 0;border-bottom:solid 1px white;color:white;font-family:arial;'>" + i['type'] + "</p>";
     for (o = 0, len5 = collected_elements.length; o < len5; o++) {

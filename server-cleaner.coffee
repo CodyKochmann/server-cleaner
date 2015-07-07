@@ -93,7 +93,7 @@ gen_photo=(list_object)->
         position: relative;
         height:auto;
         float: left;
-        width:80%;
+        width:100%;
       }
       .photo:hover, .photo:active{
         opacity:0.6;
@@ -141,8 +141,8 @@ for i in type_guide
   s=d.style
   s.position="relative"
   s.height="auto"
-  s.width="80%"
-  s.margin="0.1in 10%"
+  s.width="90%"
+  s.margin="0.1in 5%"
   s.float="left"
   d.innerHTML="<p style='height:0.25in;width:100%;margin:0.05in 0;border-bottom:solid 1px white;color:white;font-family:arial;'>#{i['type']}</p>"
   for x in collected_elements
