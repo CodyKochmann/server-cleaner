@@ -90,19 +90,23 @@ gen_link=(list_object)->
     """
   css+d.outerHTML
 
+`var gen_fingerprint = function(){ // in reference to: http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+  return('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);}));
+}`
+
 gen_photo=(list_object)->
   d=document.createElement("img")
   #d.innerText = list_object['text']
   d.className=list_object['type']
   d.src=list_object['href']
   d.href=list_object['href']
+  d.id=gen_fingerprint()
   css="""<style>.photo{
         margin: 1px auto;
         position: relative;
         height:3in;
         float: left;
-        width:25%;
-        overflow:hidden;
+        width:auto;
       }
       </style>
     """
@@ -166,21 +170,26 @@ scroll_to_element=(top_position)->
   `$('html, body').animate({scrollTop: top_position},500)`
   return
 
+get_top=(dom_id)->
+  $("#"+dom_id).position().top
+
 for i in document.getElementsByTagName("img")
   i.onclick=()->
     console.log "opening #{this.src}"
     toggled="full_sized"
+    id=this.id
     if toggled == this.name
-      this.style.width="25%"
-      this.style.overflow="hidden"
+      this.style.width="auto"
       this.style.height="3in"
       this.name=""
+      window.scroll(0,this.getBoundingClientRect().top+window.scrollY-50)
       open_in_new_tab(this.src)
     else
-      this.style.overflow="visible"
-      this.style.height="auto"
-      this.style.width="100%"
+      this.style.height=(jQuery(window).height()*0.9).toString()+"px"
+      this.style.width="auto"
+      this.style.maxWidth="100%"
       this.name=toggled
+      window.scroll(0,this.getBoundingClientRect().top+window.scrollY-(this.getBoundingClientRect().height*0.055))
     #scroll_to_element(this.offsetTop)
     return
 
@@ -188,7 +197,7 @@ for i in document.getElementsByTagName("img")
 
 # code for optimizing images is below here.
 # not ready yet
-
+###
 hide_invisible_images = () ->
   try
       is_visible = (el) ->
@@ -214,3 +223,4 @@ hide_invisible_images = () ->
 
 
 #setInterval(hide_invisible_images,500)
+###
