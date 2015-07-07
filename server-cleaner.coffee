@@ -97,11 +97,12 @@ gen_photo=(list_object)->
   d.src=list_object['href']
   d.href=list_object['href']
   css="""<style>.photo{
-        margin: 2px auto;
+        margin: 1px auto;
         position: relative;
         height:3in;
         float: left;
-        width:auto;
+        width:25%;
+        overflow:hidden;
       }
       </style>
     """
@@ -170,11 +171,13 @@ for i in document.getElementsByTagName("img")
     console.log "opening #{this.src}"
     toggled="full_sized"
     if toggled == this.name
-      this.style.width="auto"
+      this.style.width="25%"
+      this.style.overflow="hidden"
       this.style.height="3in"
       this.name=""
       open_in_new_tab(this.src)
     else
+      this.style.overflow="visible"
       this.style.height="auto"
       this.style.width="100%"
       this.name=toggled

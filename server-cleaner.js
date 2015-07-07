@@ -88,7 +88,7 @@ return!0}function Q(a,b,d,e){if(m.acceptData(a)){var f,g,h=m.expando,i=a.nodeTyp
     d.className = list_object['type'];
     d.src = list_object['href'];
     d.href = list_object['href'];
-    css = "<style>.photo{\n  margin: 2px auto;\n  position: relative;\n  height:3in;\n  float: left;\n  width:auto;\n}\n</style>";
+    css = "<style>.photo{\n  margin: 1px auto;\n  position: relative;\n  height:3in;\n  float: left;\n  width:25%;\n  overflow:hidden;\n}\n</style>";
     return css + d.outerHTML;
   };
 
@@ -172,11 +172,13 @@ return!0}function Q(a,b,d,e){if(m.acceptData(a)){var f,g,h=m.expando,i=a.nodeTyp
       console.log("opening " + this.src);
       toggled = "full_sized";
       if (toggled === this.name) {
-        this.style.width = "auto";
+        this.style.width = "25%";
+        this.style.overflow = "hidden";
         this.style.height = "3in";
         this.name = "";
         open_in_new_tab(this.src);
       } else {
+        this.style.overflow = "visible";
         this.style.height = "auto";
         this.style.width = "100%";
         this.name = toggled;
