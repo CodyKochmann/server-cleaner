@@ -89,7 +89,7 @@ gen_photo=(list_object)->
   d.src=list_object['href']
   d.href=list_object['href']
   css="""<style>.photo{
-        margin: 6px;
+        margin: 6px 0;
         position: relative;
         height:auto;
         float: left;

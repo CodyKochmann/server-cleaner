@@ -82,7 +82,7 @@
     d.className = list_object['type'];
     d.src = list_object['href'];
     d.href = list_object['href'];
-    css = "<style>.photo{\n  margin: 6px;\n  position: relative;\n  height:auto;\n  float: left;\n  width:100%;\n}\n.photo:hover, .photo:active{\n  opacity:0.6;\n}</style>";
+    css = "<style>.photo{\n  margin: 6px 0;\n  position: relative;\n  height:auto;\n  float: left;\n  width:100%;\n}\n.photo:hover, .photo:active{\n  opacity:0.6;\n}</style>";
     return css + d.outerHTML;
   };
 
