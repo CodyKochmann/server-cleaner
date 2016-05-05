@@ -34,7 +34,7 @@ return!0}function Q(a,b,d,e){if(m.acceptData(a)){var f,g,h=m.expando,i=a.nodeTyp
       "types": "mp4 avi mkv flv"
     }, {
       "type": "photo",
-      "types": "png jpeg jpg webm PNG JPEG JPG WEBM"
+      "types": "png jpeg jpg gif webm GIF PNG JPEG JPG WEBM"
     }, {
       "type": "audio",
       "types": "m4a mp3 aiff"

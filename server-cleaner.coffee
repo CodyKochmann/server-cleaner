@@ -34,7 +34,7 @@ type_guide=[{
     "types":"mp4 avi mkv flv"
     },{
     "type":"photo"
-    "types":"png jpeg jpg webm PNG JPEG JPG WEBM"
+    "types":"png jpeg jpg webm gif GIF PNG JPEG JPG WEBM"
     },{
     "type":"audio"
     "types":"m4a mp3 aiff"
