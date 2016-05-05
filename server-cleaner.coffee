@@ -2,11 +2,11 @@
 # Version: 1
 # Last Updated: Sat Jun  6 08:17:03 PDT 2015
 # License: http://cody.pw/license
-# Description: A coffeescript based cleaner for static file servers 
-#   since the user interphase for file servers right now is a little 
+# Description: A coffeescript based cleaner for static file servers
+#   since the user interphase for file servers right now is a little
 #   bare bones.
 # Usage: this could be used as a footer script in a file server page
-#   for devs that dont want to design everything. It can also be used 
+#   for devs that dont want to design everything. It can also be used
 #   as a bookmarklet for those who like this idea and would like to
 #   just have it as a tool that is always there for them.
 
@@ -55,15 +55,32 @@ type_guide=[{
     "types":""
     }]
 
+len=(o)->o.length
+
+get_extension=(s)->
+    s=s.split("")
+    out=""
+    keep_going=true
+    while(len(s)>0)
+        tmp=s.pop()
+        if keep_going
+            if tmp is "."
+                keep_going=false
+            else
+                out=tmp+out
+    out
+
 for i in collected_elements
   # search for directories
   if i.text.split("").pop()=="/"
     i["type"]="directory"
-
+  # check for file extensions
   for t in type_guide
     if i.text.split(".").pop() in t.types.split(' ')
       i['type']=t['type']
-
+    else if get_extension(i['href']) in t.types.split(' ')
+      i['type']=t['type']
+  # handle the rest
   if i["type"]==undefined
     i["type"]="other"
 
@@ -111,7 +128,7 @@ gen_photo=(list_object)->
       </style>
     """
   css+d.outerHTML
-  
+
 gen_video=(list_object)->
   d=document.createElement('video')
   d.className=list_object['type']
@@ -212,14 +229,14 @@ hide_invisible_images = () ->
           if wid != 0 || wid != undefined
             i.style.width=wid.toString()+"px"
         catch e
-          false    
-        
+          false
+
         if is_visible(i)
           i.style.visibility="hidden"
-        else 
+        else
           i.style.visibility="visible"
   catch e
-      false  
+      false
 
 
 #setInterval(hide_invisible_images,500)
